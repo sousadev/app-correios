@@ -1,10 +1,12 @@
 import React from 'react';
-import {View} from 'react-native';
+import { SafeAreaView, Text, View } from 'react-native';
 
 // import { Container } from './styles';
 
-const src: React.FC = () => {
-  return <View />;
-};
+const App: React.FC = () => (
+  <SafeAreaView>
+    <Text>Começou viu</Text>
+  </SafeAreaView>
+);
 
-export default src;
+export default App;

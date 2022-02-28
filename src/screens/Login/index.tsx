@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import {
+  Alert,
   Image,
   KeyboardAvoidingView,
   Platform,
@@ -18,14 +19,32 @@ import Logo from '../../assets/images/correios-logo.png';
 import { InputPassword, InputStandard } from '../../components/Inputs';
 import { ButtonSecondary, ButtonWhite } from '../../components/Buttons';
 import { useNavigation } from '@react-navigation/native';
+import AuthContext from '../../contexts/auth';
 
 // import { Container } from './styles';
 
 const Login: React.FC = () => {
   const navigation = useNavigation();
 
+  const { login } = useContext(AuthContext);
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   function handleClick(route: string) {
     navigation.navigate(route);
+  }
+
+  async function handleLogin(email, password) {
+    if (!email || !password) {
+      Alert.alert('Erro no preenchimento');
+    } else {
+      const response = await login({ email, password });
+
+      if (await response) {
+        Alert.alert('Logado como: ' + response.name);
+      }
+    }
   }
 
   return (
@@ -46,9 +65,19 @@ const Login: React.FC = () => {
         <View style={styles.box}>
           <H1 text='Entrar' />
         </View>
-        <InputStandard text='Username' />
-        <InputPassword text='Senha' />
-        <ButtonSecondary isDark text='ENTRAR' />
+        <InputStandard
+          onChangeText={(text: string) => setEmail(text)}
+          text='E-mail de usuário'
+        />
+        <InputPassword
+          onChangeText={(text: string) => setPassword(text)}
+          text='Senha'
+        />
+        <ButtonSecondary
+          onPress={() => handleLogin(email, password)}
+          isDark
+          text='ENTRAR'
+        />
       </KeyboardAvoidingView>
 
       <View style={styles.footer}>

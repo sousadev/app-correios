@@ -1,7 +1,7 @@
 import react from 'react';
 import axios, { AxiosRequestConfig } from 'axios';
 import React, { createContext, useState } from 'react';
-import api from '../services/api';
+import Api from '../services/api';
 
 interface AuthProps {
   user: any;
@@ -9,7 +9,7 @@ interface AuthProps {
   signed: boolean;
   token: string;
   isLogged: boolean;
-  login(): any
+  login(): any;
 }
 
 interface SignUpRequestProps {
@@ -41,7 +41,7 @@ const signUpRequest = async function ({
       name,
     },
   };
-  const { data } = await api.request(options);
+  const { data } = await Api.request(options);
   console.log(data);
   return {
     id: await data.id,
@@ -53,28 +53,31 @@ const signUpRequest = async function ({
 };
 
 async function loginRequest({ email, password }: LoginRequestProps) {
-  const options: AxiosRequestConfig = {
+  const options = {
     method: 'POST',
-    url: '/login',
+    url: 'https://api-correios-sousadev.herokuapp.com/login',
+
     data: {
       email,
       password,
     },
   };
-  const { data: any } = await api.request(options);
 
-  return(
-    user: data,
-    token: data.token
-  )
+  await axios
+    .request(options)
+    .then(async ({ data }) => {
+      // console.log(data);
+      return await data;
+    })
+    .catch(async (err) => console.log(err));
+  // return;
 }
 
 export const AuthProvider: React.FC = ({ children }: any) => {
   const [signed, setSigned] = useState(false);
   const [user, setUser] = useState({});
 
-
-  async function signUp({ email, password, name }) {
+  async function signUp({ email, password, name }: SignUpRequestProps) {
     console.log('chegou');
     const response = await signUpRequest({
       email,
@@ -83,18 +86,33 @@ export const AuthProvider: React.FC = ({ children }: any) => {
       userType: 'consumer',
     } as SignUpRequestProps);
     setUser(await response);
-    console.log(response);
+    // console.log(response);
 
     console.log('logged: ' + signed);
   }
 
-  async function login({email, password}){
-    const response = await loginRequest({email, password} as LoginRequestProps)
+  async function login({ email, password }: LoginRequestProps) {
+    const options = {
+      method: 'POST',
+      url: 'https://api-correios-sousadev.herokuapp.com/login',
+
+      data: {
+        email,
+        password,
+      },
+    };
+
+    const response = await axios
+      .request(options)
+      .then(async ({ data }) => {
+        // console.log(data);
+        return await data;
+      })
+      .catch(async (err) => console.log(err));
     setUser(await response);
     console.log(response);
     setSigned(true);
   }
-
 
   return (
     <AuthContext.Provider value={{ signed, user, signUp, login } as AuthProps}>

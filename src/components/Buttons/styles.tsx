@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { colors } from '../../themes';
 
-export const ButtonSecondaryStyled = styled.TouchableOpacity`
+export const ButtonSecondaryStyled = styled.TouchableHighlight`
   width: auto;
   height: 60px;
   border-radius: 8px;
@@ -15,7 +15,7 @@ export const ButtonSecondaryStyled = styled.TouchableOpacity`
   margin-bottom: 10px;
 `;
 export const ButtonWhiteStyled = styled.TouchableOpacity`
-  width: auto;
+  width: 100%;
   height: 60px;
   border-radius: 8px;
   border: 1px;

@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
+  Alert,
   Image,
   KeyboardAvoidingView,
   Platform,
@@ -17,21 +18,28 @@ import Logo from '../../assets/images/correios-logo.png';
 
 import { InputPassword, InputStandard } from '../../components/Inputs';
 import { ButtonSecondary, ButtonWhite } from '../../components/Buttons';
+import AuthContext from '../../contexts/auth';
 import { useNavigation } from '@react-navigation/native';
 
 // import { Container } from './styles';
 
-const Login: React.FC = () => {
+const SignUp: React.FC = () => {
+  const { signUp } = useContext(AuthContext);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
   const navigation = useNavigation();
 
   function handleClick(route: string) {
     navigation.navigate(route);
   }
 
+  useEffect(() => {}, []);
   return (
     <SafeAreaView
       style={{
-        backgroundColor: colors.primary,
+        backgroundColor: colors.whiteCorreios,
         flex: 1,
         alignItems: 'stretch',
       }}>
@@ -44,29 +52,37 @@ const Login: React.FC = () => {
         behavior={Platform.OS === 'ios' ? 'padding' : undefined}
         enabled>
         <View style={styles.box}>
-          <H1 text='Entrar' />
+          <H1 isDark text='Cadastre-se' />
         </View>
-        <InputStandard text='Username' />
-        <InputPassword text='Senha' />
-        <ButtonSecondary isDark text='ENTRAR' />
-      </KeyboardAvoidingView>
-
-      <View style={styles.footer}>
-        <ButtonWhite
-          onPress={() => handleClick('SignUp')}
-          isDark
-          text='Cadastre-se'
+        <InputStandard
+          onChangeText={(text: string) => setName(text)}
+          text='Nome'
         />
-        <Text
-          style={{
-            fontSize: 14,
-            fontWeight: 'bold',
-            paddingVertical: 3,
-            color: colors.yellow,
-          }}>
-          Caso não tenha conta crie uma...
-        </Text>
-      </View>
+        <InputStandard
+          onChangeText={(text: string) => setEmail(text)}
+          text='e-Mail'
+        />
+        <InputPassword
+          onChangeText={(text: string) => setPassword(text)}
+          text='Senha'
+        />
+
+        <ButtonSecondary
+          isDark
+          text='REGISTRAR'
+          onPress={() => {
+            const response = signUp({
+              email: email,
+              password: password,
+              name: name,
+            });
+            if (response) {
+              Alert.alert('Registrado com sucesso!');
+              handleClick('Login');
+            }
+          }}
+        />
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
@@ -88,8 +104,7 @@ const styles = StyleSheet.create({
   footer: {
     borderTopColor: colors.whiteCorreios,
     position: 'relative',
-    borderTopWidth: 1,
-    border: '1px',
+
     // padding: 10,
     paddingTop: 10,
     margin: 10,
@@ -98,4 +113,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Login;
+export default SignUp;

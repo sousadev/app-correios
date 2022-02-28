@@ -6,7 +6,7 @@ import { colors } from '../../themes';
 // import { Container } from './styles';
 
 export const TopHeader = styled.View`
-  /* flex: 1; */
+  flex: 1;
   height: 250px;
   width: 100%;
   background-color: ${colors.secondary};

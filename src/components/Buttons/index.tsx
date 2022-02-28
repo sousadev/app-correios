@@ -5,19 +5,28 @@ import { ButtonSecondaryStyled, ButtonWhiteStyled } from './styles';
 
 interface ButtonSecondaryProps {
   text: string;
+  isDark?: boolean;
+  onPress?: () => void;
 }
 
-export const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({ text }) => {
+export const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({
+  text,
+  isDark,
+  onPress,
+}) => {
   return (
-    <ButtonSecondaryStyled>
-      <H2 text={text} />
+    <ButtonSecondaryStyled onPress={onPress}>
+      <H2 isDark={isDark} text={text} />
     </ButtonSecondaryStyled>
   );
 };
-export const ButtonWhite: React.FC<ButtonSecondaryProps> = ({ text }) => {
+export const ButtonWhite: React.FC<ButtonSecondaryProps> = ({
+  text,
+  onPress,
+}) => {
   return (
-    <ButtonWhiteStyled>
-      <H2 text={text} />
+    <ButtonWhiteStyled onPress={onPress}>
+      <H2 isDark text={text} />
     </ButtonWhiteStyled>
   );
 };

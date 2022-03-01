@@ -40,10 +40,6 @@ const Login: React.FC = () => {
       Alert.alert('Erro no preenchimento');
     } else {
       const response = await login({ email, password });
-
-      if (await response) {
-        Alert.alert('Logado como: ' + response.name);
-      }
     }
   }
 
@@ -114,6 +110,7 @@ const styles = StyleSheet.create({
     width: 146,
     height: 100,
   },
+
   footer: {
     borderTopColor: colors.whiteCorreios,
     position: 'relative',

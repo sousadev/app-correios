@@ -109,9 +109,12 @@ export const AuthProvider: React.FC = ({ children }: any) => {
         return await data;
       })
       .catch(async (err) => console.log(err));
+
     setUser(await response);
-    console.log(response);
-    setSigned(true);
+    setTimeout(() => {
+      setSigned(true);
+      console.log(response);
+    }, 2000);
   }
 
   return (

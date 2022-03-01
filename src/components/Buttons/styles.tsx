@@ -27,3 +27,15 @@ export const ButtonWhiteStyled = styled.TouchableOpacity`
   margin-top: 5px;
   margin-bottom: 10px;
 `;
+
+export const ButtonCardServicesStyled = styled.TouchableOpacity`
+  flex: 1;
+  flex-direction: row;
+  height: 110px;
+  border-radius: 11px;
+  padding: 10px;
+  margin: 4px;
+  align-items: flex-end;
+  background-color: ${colors.secondary};
+  color: ${colors.primary};
+`;

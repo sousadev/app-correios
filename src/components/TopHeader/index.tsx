@@ -16,3 +16,25 @@ export const TopHeader = styled.View`
   justify-content: center;
   margin-bottom: 15px;
 `;
+
+export const DashboardHeaderStyled = styled.View`
+  /* flex: 1; */
+  width: auto;
+  margin-top: 10px;
+  margin-bottom: 15px;
+  height: 1000px;
+  padding: 10px;
+  background-color: ${colors.whiteCorreios};
+`;
+
+export const UserHeader = styled.View`
+  /* flex: 1; */
+  flex-direction: row;
+  margin: 5px;
+  background-color: ${colors.soft};
+  height: 50px;
+  padding-left: 8px;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: 8px;
+`;

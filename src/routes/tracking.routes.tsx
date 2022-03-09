@@ -5,6 +5,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { colors } from '../themes';
 import TrackingList from '../screens/Tracking/TrackingList';
 import TrackingView from '../screens/Tracking/TrackingView';
+import TrackingAdd from '../screens/Tracking/TrackingAdd';
 
 const TrackingStack = createNativeStackNavigator();
 
@@ -22,6 +23,15 @@ const TrackingRoute: React.FC = () => {
         options={{
           headerShown: true,
           title: 'Rastreio',
+          headerTintColor: colors.primary,
+        }}
+      />
+      <TrackingStack.Screen
+        name='TrackingAdd'
+        component={TrackingAdd}
+        options={{
+          headerShown: false,
+          title: 'Add',
           headerTintColor: colors.primary,
         }}
       />

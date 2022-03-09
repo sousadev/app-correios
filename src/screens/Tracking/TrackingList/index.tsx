@@ -9,7 +9,7 @@ import { TrackingPage, TrackingTitle } from './styles';
 // import { Container } from './styles';
 
 const TrackingList: React.FC = (): any => {
-  const navigation = useNavigation();
+  const navigation: any = useNavigation();
 
   function handleNavigation(page: string) {
     navigation.navigate(page);

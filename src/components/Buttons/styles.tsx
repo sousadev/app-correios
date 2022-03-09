@@ -1,6 +1,19 @@
 import styled from 'styled-components/native';
 import { colors } from '../../themes';
 
+export const ButtonPrimaryStyled = styled.TouchableHighlight`
+  width: auto;
+  height: 60px;
+  border-radius: 8px;
+  border: 1px;
+  border-color: ${colors.primary};
+  color: ${colors.primary};
+  background-color: ${colors.primary};
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 10px;
+`;
 export const ButtonSecondaryStyled = styled.TouchableHighlight`
   width: auto;
   height: 60px;

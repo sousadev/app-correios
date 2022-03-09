@@ -6,6 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { H1, H2 } from '../Texts';
 import {
   ButtonCardServicesStyled,
+  ButtonPrimaryStyled,
   ButtonSecondaryStyled,
   ButtonWhiteStyled,
 } from './styles';
@@ -24,6 +25,18 @@ interface ButtonCardServicesProps {
   icon: string;
   number?: any;
 }
+
+export const ButtonPrimary: React.FC<ButtonSecondaryProps> = ({
+  text,
+  isDark,
+  onPress,
+}) => {
+  return (
+    <ButtonPrimaryStyled onPress={onPress}>
+      <H2 isDark={isDark} text={text} />
+    </ButtonPrimaryStyled>
+  );
+};
 
 export const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({
   text,

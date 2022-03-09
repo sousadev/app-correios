@@ -9,8 +9,7 @@ export const InputStandardStyled = styled.TextInput`
   background-color: ${colors.white};
   color: ${colors.blueHard};
   border-radius: 8px;
-  border-color: ${colors.whiteCorreios};
-  border: 1px;
+
   padding: 15px;
   margin-top: 5px;
   margin-bottom: 10px;
@@ -24,8 +23,7 @@ export const InputPasswordStyled = styled.TextInput`
   background-color: ${colors.white};
   color: ${colors.blueHard};
   border-radius: 8px;
-  border-color: ${colors.whiteCorreios};
-  border: 1px;
+
   padding: 15px;
   margin-top: 5px;
   margin-bottom: 10px;

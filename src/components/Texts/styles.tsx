@@ -17,6 +17,14 @@ export const H2Styled = styled.Text`
   font-family: 'WorkSans-VariableFont_wght';
   font-size: 20px;
   font-weight: bold;
-  color: ${colors.primary};
+
+  background-color: transparent;
+`;
+
+export const H3Styled = styled.Text`
+  font-family: 'WorkSans-VariableFont_wght';
+  font-size: 14px;
+  font-weight: bold;
+
   background-color: transparent;
 `;

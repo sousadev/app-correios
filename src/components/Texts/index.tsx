@@ -1,7 +1,7 @@
 import React from 'react';
 import { View } from 'react-native';
 import { colors } from '../../themes';
-import { H1Styled, H2Styled } from './styles';
+import { H1Styled, H2Styled, H3Styled } from './styles';
 
 // import { Container } from './styles';
 
@@ -18,4 +18,9 @@ export const H1: React.FC<H1Props> = ({ text, isDark }) => {
 export const H2: React.FC<H1Props> = ({ text, isDark }) => {
   const colorText = isDark ? colors.blueDark : colors.white;
   return <H2Styled style={{ color: colorText }}>{text}</H2Styled>;
+};
+
+export const H3: React.FC<H1Props> = ({ text, isDark }) => {
+  const colorText = isDark ? colors.blueMedium : colors.white;
+  return <H3Styled style={{ color: colorText }}>{text}</H3Styled>;
 };

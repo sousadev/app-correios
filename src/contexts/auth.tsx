@@ -105,7 +105,6 @@ export const AuthProvider: React.FC = ({ children }: any) => {
     const response = await axios
       .request(options)
       .then(async ({ data }) => {
-        // console.log(data);
         return await data;
       })
       .catch(async (err) => console.log(err));

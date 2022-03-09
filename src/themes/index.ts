@@ -1,4 +1,23 @@
-export const colors = {
+interface colorsProps {
+  primary: string;
+  secondary: string;
+  whiteCorreios: string;
+  white: string;
+  black: string;
+  yellow: string;
+  blueMedium: string;
+  blueSoft: string;
+  blueHard: string;
+  blueDark: string;
+  greenLight: string;
+  alert: string;
+  lightGray: string;
+  whiteGray: string;
+  mediumGray: string;
+  soft: string;
+}
+
+export const colors: colorsProps = {
   primary: '#003d6c',
   secondary: '#fee200',
   whiteCorreios: '#f8fafa',

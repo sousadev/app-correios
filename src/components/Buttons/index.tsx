@@ -22,7 +22,7 @@ interface ButtonCardServicesProps {
   text2: string;
   onPress?: any;
   icon: string;
-  number: any;
+  number?: any;
 }
 
 export const ButtonSecondary: React.FC<ButtonSecondaryProps> = ({

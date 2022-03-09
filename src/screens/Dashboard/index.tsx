@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React, { useContext } from 'react';
 import { Text, View, SafeAreaView } from 'react-native';
 import { ButtonCardServices } from '../../components/Buttons';
@@ -11,6 +12,10 @@ import { LogoutButton, TextDashboard, DashboardHeader } from './styles';
 
 const Dashboard: React.FC = () => {
   const { user } = useContext(AuthContext);
+  const navigation = useNavigation();
+  function handleNavigation(page: string) {
+    navigation.navigate(page);
+  }
 
   return (
     <SafeAreaView style={{ backgroundColor: colors.white }}>
@@ -24,6 +29,7 @@ const Dashboard: React.FC = () => {
           text1='RASTREIOS'
           text2='de encomendas'
           number={12}
+          onPress={() => handleNavigation('Tracking')}
         />
         <ButtonCardServices
           icon='currency-usd'

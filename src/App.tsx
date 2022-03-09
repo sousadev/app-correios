@@ -4,6 +4,7 @@ import styled from 'styled-components/native';
 import AuthContext, { AuthProvider } from './contexts/auth';
 
 import AuthRoute from './routes/auth.routes';
+import DashboardRoute from './routes/dashboard.routes';
 import Dashboard from './screens/Dashboard';
 import Login from './screens/Login';
 import SignUp from './screens/SignUp';
@@ -14,7 +15,7 @@ import { colors } from './themes';
 const App: React.FC = () => {
   const [isLogged, setIsLogged] = useState(false);
   const { signed } = useContext(AuthContext);
-  return signed ? <Dashboard /> : <AuthRoute />;
+  return signed ? <DashboardRoute /> : <AuthRoute />;
 };
 
 export default App;
